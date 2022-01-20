@@ -7,5 +7,5 @@ export class Worldspace {
     width: number;
     xaxis: number;
     yaxis: number;
-
+    choice: number;
 }

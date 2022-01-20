@@ -9,6 +9,7 @@ import { Worldspace } from './worldspace';
 export class WorldspaceserviceService {
 
   private baseURL = "http://localhost:8080/api/v3/entityval";
+  private baseURL2 = "http://localhost:8080/api/v3/entityval1";
 
   constructor(private httpClient: HttpClient) { }
 
@@ -16,4 +17,7 @@ export class WorldspaceserviceService {
     return this.httpClient.get<Worldspace>(`${this.baseURL}`);
   }
 
+  getEntity2(): Observable<Worldspace>{
+    return this.httpClient.get<Worldspace>(`${this.baseURL2}`);
+  }
 }

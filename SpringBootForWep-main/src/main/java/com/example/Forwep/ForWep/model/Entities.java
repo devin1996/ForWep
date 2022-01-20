@@ -18,12 +18,13 @@ public class Entities {
     private double width;
     private double xaxis;
     private double yaxis;
+    private int choice;
     
 
     public Entities() {
     }
 
-    public Entities(String name, String path, double velocity, double length, double width, double xaxis, double yaxis) {
+    public Entities(String name, String path, double velocity, double length, double width, double xaxis, double yaxis, int choice) {
         this.name = name;
         this.path = path;
         this.velocity = velocity;
@@ -31,7 +32,18 @@ public class Entities {
         this.width = width;
         this.xaxis = xaxis;
         this.yaxis = yaxis;
+        this.choice = choice;
     }
+
+    public int getChoice() {
+        return choice;
+    }
+
+    public void setChoice(int choice) {
+        this.choice = choice;
+    }
+
+    
 
     public double getLength() {
         return length;
