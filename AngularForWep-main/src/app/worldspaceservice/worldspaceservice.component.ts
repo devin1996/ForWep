@@ -132,24 +132,67 @@ export class WorldspaceserviceComponent implements OnInit {
 
     let canvas = document.getElementById("canvas") as HTMLCanvasElement;
     let ctx = canvas.getContext("2d");
+    ctx!.fillStyle="white";
+
+    let circle1x =0,circle1y =0,circle1r=0;
+    let circle2x=0,circle2y=0,circle2r=0;
+
     if (choice == 1) {
+      circle1x =x + l * 200;
+      circle1y = y + l * 200;
+      circle1r= l * 200; 
+      ctx?.save();
       ctx?.beginPath();
-      ctx?.arc(x + l * 200, y + l * 200, l * 200, 0, 30 * Math.PI);
+      ctx?.arc(circle1x,circle1y , circle1r, 0, 30 * Math.PI);
       ctx?.stroke();
+      ctx?.fill();
+
+      ctx!.globalCompositeOperation="source-over";
     }
     else if (choice == 2) {
       ctx?.beginPath();
       ctx?.rect(x, y, w * 200, l * 130);
       ctx?.stroke();
     } else {
+      // ctx?.beginPath();
+      // ctx?.moveTo(100, 100);
+      // ctx?.lineTo(100, 300);
+      // ctx?.lineTo(300, 300);
+      // ctx?.closePath();
+      // ctx!.lineWidth = 1;
+      // ctx?.stroke();
+
+      circle2x =x + l * 200;
+      circle2y = y + l * 200;
+      circle2r= l * 200; 
+
       ctx?.beginPath();
-      ctx?.moveTo(100, 100);
-      ctx?.lineTo(100, 300);
-      ctx?.lineTo(300, 300);
-      ctx?.closePath();
-      ctx!.lineWidth = 1;
+      ctx!.fillStyle="red";
+      ctx!.globalCompositeOperation="source-atop";
+      ctx?.arc(circle2x,circle2y,circle2r, 0, 2*Math.PI, false);
+      ctx?.fill(); 
       ctx?.stroke();
+      ctx?.restore();
+  
+      // destination-over to draw fill for circle2 again
+      ctx?.beginPath();
+      ctx!.globalCompositeOperation="destination-over";
+      ctx?.arc(circle2x,circle2y,circle2r, 0, 2*Math.PI, false);
+      ctx?.fill();
+  
+      // back to normal composite mode (newest drawings on top)
+      ctx!.globalCompositeOperation="source-over";
     }
+    // console.log(circle1x);
+    // ctx?.beginPath();
+    // ctx?.arc(circle1x,circle1y,circle1r, 0, 2*Math.PI, false);
+    // ctx?.stroke();
+
+    // draw the stroke for circle2 again
+    // ctx?.beginPath();
+    // ctx?.arc(circle2x,circle2y,circle2r, 0, 2*Math.PI, false);
+    // ctx?.stroke();
+
 
   }
 
